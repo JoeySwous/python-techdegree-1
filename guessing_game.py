@@ -28,14 +28,13 @@ def start_game():
         else:
             print(f'HIGH SCORE: {high_score}\n')
         random_number = random.randint(1, 10)
-        tries = 0
+        tries = 1
         print('ENTER A NUMBER 1 - 10 TO BEGIN. ')        
         while True:
             try:
                 guess = int(input(">  "))
                 if guess < 1 or guess > 10:
                     print('THAT NUMBER IS OUTSIDE OF THE RANGE.\nPLEASE ENTER ONLY NUMBERS 1 - 10.\n')
-                    tries +=1
                     continue
                 if guess < random_number:
                     print('IT\'S HIGHER. TRY AGAIN.\n')
@@ -48,7 +47,6 @@ def start_game():
                 if guess == random_number:
                     print(f'YOU\'RE A HERO!\nIT TOOK YOU {tries} TRIES TO GUESS {random_number}.\nYOU SUCCESSFULLY DEFUSED THE BOMB.\n')
                     break
-                break
             except ValueError:
                 print('SORRY! YOU ENTERED AN INCORRECT VALUE. TRY AGAIN WITH A NUMBER 1 - 10 ')
                 tries += 1
@@ -57,7 +55,7 @@ def start_game():
         if high_score == 0 or tries < high_score:
             high_score = tries
         replay = input('WOULD YOU LIKE TO PLAY AGAIN?\nENTER Y TO PLAY AGAIN.  >> ')
-        if replay == 'Y'.lower():
+        if replay.lower() == 'y':
             continue
         else:
             print('UNTIL NEXT TIME THEN... ')
